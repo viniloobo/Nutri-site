@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricionista | Saúde da Mulher & Ciência</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap');
+
+        :root {
+            --olive: #6f6134;
+            --olive-light: #e1c68f;
+            --terracotta: #af926a;
+            --bg-light: #fae7c9;
+            --bg-accent: #F9EBE0;
+            --text: #2D3027;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-fade {
+            display: none;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section-fade.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-active {
+            opacity: 1 !important;
+            font-weight: 700;
+        }
+
+        .nav-underline {
+            height: 2px;
+            background-color: var(--terracotta);
+            width: 100%;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            border-radius: 99px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-400 py-3">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer group" onclick="navigateTo('home')">
+                <div class="w-3/4 h-3/4 rounded-2xl overflow-hidden">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-contain">
+                        </div>
+                </div>
+             
+
+            <div class="hidden md:flex items-center gap-14 font-medium text-lg">
+                <button onclick="navigateTo('home')" class="nav-link relative py-1 opacity-40 hover:opacity-100 transition-all" data-page="home">Início</button>
+                <button onclick="navigateTo('sobre')" class="nav-link relative py-1 opacity-40 hover:opacity-100 transition-all" data-page="sobre">Sobre</button>
+                <button onclick="navigateTo('metodo')" class="nav-link relative py-1 opacity-40 hover:opacity-100 transition-all" data-page="metodo">Método</button>
+                
+                <button onclick="navigateTo('contato')" class="px-10 py-3.5 rounded-2xl text-white font-bold transition transform hover:scale-105 shadow-md" style="background-color: var(--terracotta);">
+                    Agendar
+                </button>
+            </div>
+
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i id="menu-icon" data-lucide="menu" size="40"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 text-3xl font-serif hidden">
+        <button onclick="navigateTo('home')" class="capitalize">Início</button>
+        <button onclick="navigateTo('sobre')" class="capitalize">Sobre</button>
+        <button onclick="navigateTo('metodo')" class="capitalize">Método</button>
+        <button onclick="navigateTo('contato')" class="capitalize">Contato</button>
+        <button onclick="toggleMenu()" class="mt-8 p-4 rounded-full bg-stone-100 text-stone-400">
+            <i data-lucide="x" size="32"></i>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
+        
+        <!-- HOME PAGE -->
+        <section id="page-home" class="section-fade active pt-40 pb-24 px-6 md:pt-48">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10">
+                    <div class="inline-block px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-white shadow-xl border border-stone-100" style="color: var(--olive);">
+                        Nutrição & Saúde
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-serif font-medium leading-[1.1]">
+                        Cada fase da sua vida<span style="color: var(--terracotta);"> pede um cuidado diferente.</span>
+                    </h1>
+                    <p class="text-xl leading-relaxed max-w-lg opacity-80">
+                        Acompanhamento nutricional para mulheres reais que buscam equilíbrio, saúde e uma relação mais leve com a comida em todas as fases da vida.
+                    </p>
+                    <div class="flex flex-wrap gap-5 pt-4">
+                        <button onclick="navigateTo('metodo')" class="px-12 py-5 rounded-2xl text-white font-bold flex items-center gap-2 shadow-lg transition hover:brightness-110 active:scale-95" style="background-color: var(--olive);">
+                            Conhecer o Método <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="navigateTo('contato')" class="px-12 py-5 rounded-2xl font-bold flex items-center gap-2 border-2 transition hover:bg-white active:scale-95" style="border-color: var(--terracotta); color: var(--terracotta);">
+                            Agendar Consulta
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl bg-stone-200 border-[12px] border-white relative z-10">
+                        <div class="w-full h-full flex items-center justify-center text-stone-400 italic bg-stone-100">
+                            <img src="foto home.jpeg" alt="Logo" class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center">
+                        </div>
+                    </div>
+                    <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-20 blur-3xl" style="background-color: var(--olive);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE PAGE -->
+        <section id="page-sobre" class="section-fade pt-40 pb-24 px-6 md:pt-48">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-serif mb-16 text-center">A ciência aplicada ao seu bem-estar</h2>
+                <div class="grid md:grid-cols-2 gap-20 items-center">
+                    <div class="space-y-10">
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold" style="color: var(--olive);">Trajetória e Especialidade</h3>
+                            <p class="text-lg leading-relaxed opacity-80">
+                                Sou nutricionista formada pela UNESP – Universidade Estadual Paulista Júlio de Mesquita Filho, com atuação voltada ao cuidado integral da saúde da mulher.
+                            </p>
+                            <p class="text-lg leading-relaxed opacity-80">
+                                Atualmente, sou mestranda, com linha de pesquisa focada em marcadores perinatais das doenças hipertensivas na gestação, o que fortalece minha prática clínica baseada em ciência e em um olhar atento às diferentes fases da vida feminina.
+                            </p>
+                            <p class="text-lg leading-relaxed opacity-80">
+                                Minha atuação é direcionada à nutrição aplicada à saúde da mulher, considerando as particularidades fisiológicas e metabólicas que acompanham cada fase da vida feminina.
+                            </p>
+                        </div>
+                        <ul class="space-y-8">
+                            <li class="flex gap-5">
+                                <div class="p-4 rounded-2xl bg-white shadow-sm flex-shrink-0" style="color: var(--terracotta);">
+                                    <i data-lucide="graduation-cap" size="24"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Formação acadêmica</p>
+                                    <p class="opacity-60">UNESP - Botucatu.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-5">
+                                <div class="p-4 rounded-2xl bg-white shadow-sm flex-shrink-0" style="color: var(--terracotta);">
+                                    <i data-lucide="microscope" size="24"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Investigação Acadêmica</p>
+                                    <p class="opacity-60">Mestranda focada em saúde da mulher.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-white p-4 rounded-[3.5rem] shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
+                            <div class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center justify-center text-stone-400 italic">
+                                <img src="foto sobre.png" alt="Logo" class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÉTODO PAGE -->
+        <section id="page-metodo" class="section-fade pt-40 pb-24 px-6 md:pt-48">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-24 space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-serif">Diferenciais do Acompanhamento</h2>
+                    <p class="opacity-60 max-w-xl mx-auto italic text-lg">O suporte que você precisa para resultados reais e para vida toda.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Card 1 -->
+                    <div class="p-12 rounded-[3.5rem] shadow-sm border border-stone-100 flex flex-col items-center text-center transition hover:-translate-y-2 hover:shadow-xl" style="background-color: var(--bg-accent);">
+                        <div class="w-20 h-20 rounded-3xl flex items-center justify-center mb-10 bg-white shadow-md" style="color: var(--terracotta);">
+                            <i data-lucide="search" size="32"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-5">Análise de exames laboratoriais</h3>
+                        <p class="opacity-70 leading-relaxed text-lg">Com uma avaliação detalhada dos seus exames laboratoriais, identifico suas necessidades reais, permitindo que a nutrição seja direcionada para resultados mais precisos e eficientes.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="p-12 rounded-[3.5rem] shadow-sm border border-stone-100 flex flex-col items-center text-center transition hover:-translate-y-2 hover:shadow-xl" style="background-color: var(--bg-accent);">
+                        <div class="w-20 h-20 rounded-3xl flex items-center justify-center mb-10 bg-white shadow-md" style="color: var(--terracotta);">
+                            <i data-lucide="files" size="32"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-5">Materiais personalizados</h3>
+                        <p class="opacity-70 leading-relaxed text-lg">Cada paciente recebe materiais e orientações personalizadas, planejados de acordo com seus objetivos, rotina e particularidades, para tornar a alimentação prática e sustentável.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="p-12 rounded-[3.5rem] shadow-sm border border-stone-100 flex flex-col items-center text-center transition hover:-translate-y-2 hover:shadow-xl" style="background-color: var(--bg-accent);">
+                        <div class="w-20 h-20 rounded-3xl flex items-center justify-center mb-10 bg-white shadow-md" style="color: var(--terracotta);">
+                            <i data-lucide="message-circle" size="32"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-5">Suporte via WhatsApp</h3>
+                        <p class="opacity-70 leading-relaxed text-lg">Durante todo o processo, você conta com suporte direto via WhatsApp, esclarecendo dúvidas, ajustando estratégias e mantendo a motivação sempre em alta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO PAGE -->
+        <section id="page-contato" class="section-fade pt-40 pb-24 px-6 md:pt-48">
+            <div class="max-w-xl mx-auto text-center space-y-16">
+                <div class="space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-serif">Inicie agora sua jornada</h2>
+                    <p class="text-xl opacity-70">
+                        Clique no botão abaixo para agendar a sua consulta e receber um atendimento verdadeiramente especializado.
+                    </p>
+                </div>
+                <div class="space-y-8">
+                    <a href="https://forms.gle/cdDjszDy4aV2sxzC7" target="_blank" class="w-full flex items-center justify-center gap-4 p-10 rounded-[3rem] text-white font-bold text-2xl shadow-xl transition hover:scale-[1.02] active:scale-95" style="background-color: var(--olive);">
+                        <i data-lucide="message-circle" size="32"></i> Entrar na lista VIP de interessados
+                    </a>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="p-10 rounded-[3rem] bg-white border border-stone-100 shadow-sm text-center">
+                            <p class="text-xs opacity-40 uppercase font-bold mb-3 tracking-widest text-stone-500">Especialidade</p>
+                            <p class="text-l font-bold" style="color: var(--olive);">Saúde da Mulher</p>
+                        </div>
+                        <div class="p-10 rounded-[3rem] bg-white border border-stone-100 shadow-sm text-center">
+                            <p class="text-xs opacity-40 uppercase font-bold mb-3 tracking-widest text-stone-500">Modalidade</p>
+                            <p class="text-l font-bold" style="color: var(--olive);">Atendimento Online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+        <footer class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="space-y-5 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-4">
+                    <div class="w-1/4 h-1/4 rounded-2xl overflow-hidden">
+                    <img src="logo footer.png" alt="Logo" class="w-full h-full object-contain">
+                        </div>
+                </div>
+                <p class="text-base opacity-50">Nutrição com Rigor Científico Aplicada a Saúde Feminina</p>
+                <p class="text-base opacity-50">©Vincius Lobo 2026. All rights reserved</p>
+            </div>
+            <div class="flex gap-3">
+                    <a href="https://www.instagram.com/lauschwertz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="opacity-40 hover:opacity-100 hover:scale-110 transition-transform">
+                        <i data-lucide="instagram" size="28"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/laura-cristina-schwerdtfeger-10741029b/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="opacity-40 hover:opacity-100 hover:scale-110 transition-transform">
+                        <i data-lucide="linkedin" size="28"></i>
+                    </a>
+                </div>
+         </footer>
+
+    <script>
+        // Inicialização de Ícones
+        lucide.createIcons();
+
+        // Lógica de Navegação (SPA)
+        function navigateTo(pageId) {
+            // Esconde todas as seções
+            document.querySelectorAll('.section-fade').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostra a seção desejada
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Atualiza o estado da Navbar
+            updateNavActive(pageId);
+
+            // Fecha menu mobile se estiver aberto
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll para o topo
+            window.scrollTo(0, 0);
+        }
+
+        function updateNavActive(pageId) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('nav-active');
+                // Remove underlines existentes
+                const existingUnderline = link.querySelector('.nav-underline');
+                if (existingUnderline) existingUnderline.remove();
+
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('nav-active');
+                    const underline = document.createElement('span');
+                    underline.className = 'nav-underline';
+                    link.appendChild(underline);
+                }
+            });
+        }
+
+        // Menu Mobile Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-lg', 'py-2', 'shadow-sm');
+                nav.classList.remove('bg-transparent', 'py-1');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-lg', 'py-2', 'shadow-sm');
+                nav.classList.add('bg-transparent', 'py-1');
+            }
+        });
+
+        // Set Home as default on load
+        window.onload = () => {
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>
