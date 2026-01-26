@@ -8,61 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap');
-
-        :root {
-            --olive: #6f6134;
-            --olive-light: #e1c68f;
-            --terracotta: #af926a;
-            --bg-light: #fae7c9;
-            --bg-accent: #F9EBE0;
-            --text: #2D3027;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text);
-            scroll-behavior: smooth;
-        }
-
-        .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .section-fade {
-            display: none;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .section-fade.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .nav-active {
-            opacity: 1 !important;
-            font-weight: 700;
-        }
-
-        .nav-underline {
-            height: 2px;
-            background-color: var(--terracotta);
-            width: 100%;
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            border-radius: 99px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-400 py-3">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
@@ -178,7 +126,7 @@
                     <div class="relative">
                         <div class="bg-white p-4 rounded-[3.5rem] shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
                             <div class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center justify-center text-stone-400 italic">
-                                <img src="foto sobre.png" alt="Logo" class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center">
+                                <img src="foto sobre.jpeg" alt="Logo" class="aspect-[3/4] rounded-[2.8rem] bg-stone-100 flex items-center">
                             </div>
                         </div>
                     </div>
@@ -235,7 +183,7 @@
                     <a href="https://forms.gle/cdDjszDy4aV2sxzC7" target="_blank" class="w-full flex items-center justify-center gap-4 p-10 rounded-[3rem] text-white font-bold text-2xl shadow-xl transition hover:scale-[1.02] active:scale-95" style="background-color: var(--olive);">
                         <i data-lucide="message-circle" size="32"></i> Entrar na lista VIP de interessados
                     </a>
-                    <div class="grid grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="p-10 rounded-[3rem] bg-white border border-stone-100 shadow-sm text-center">
                             <p class="text-xs opacity-40 uppercase font-bold mb-3 tracking-widest text-stone-500">Especialidade</p>
                             <p class="text-l font-bold" style="color: var(--olive);">Saúde da Mulher</p>
@@ -278,72 +226,6 @@
                     </a>
                 </div>
          </footer>
-
-    <script>
-        // Inicialização de Ícones
-        lucide.createIcons();
-
-        // Lógica de Navegação (SPA)
-        function navigateTo(pageId) {
-            // Esconde todas as seções
-            document.querySelectorAll('.section-fade').forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Mostra a seção desejada
-            const target = document.getElementById('page-' + pageId);
-            if (target) {
-                target.classList.add('active');
-            }
-
-            // Atualiza o estado da Navbar
-            updateNavActive(pageId);
-
-            // Fecha menu mobile se estiver aberto
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Scroll para o topo
-            window.scrollTo(0, 0);
-        }
-
-        function updateNavActive(pageId) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('nav-active');
-                // Remove underlines existentes
-                const existingUnderline = link.querySelector('.nav-underline');
-                if (existingUnderline) existingUnderline.remove();
-
-                if (link.getAttribute('data-page') === pageId) {
-                    link.classList.add('nav-active');
-                    const underline = document.createElement('span');
-                    underline.className = 'nav-underline';
-                    link.appendChild(underline);
-                }
-            });
-        }
-
-        // Menu Mobile Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('bg-white/90', 'backdrop-blur-lg', 'py-2', 'shadow-sm');
-                nav.classList.remove('bg-transparent', 'py-1');
-            } else {
-                nav.classList.remove('bg-white/90', 'backdrop-blur-lg', 'py-2', 'shadow-sm');
-                nav.classList.add('bg-transparent', 'py-1');
-            }
-        });
-
-        // Set Home as default on load
-        window.onload = () => {
-            navigateTo('home');
-        };
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
