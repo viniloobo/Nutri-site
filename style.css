@@ -123,3 +123,52 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+
+        /* WhatsApp Floating Button */
+        .wpp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .42);
+            transition: transform .3s, box-shadow .3s;
+            animation: floatIn .6s .8s backwards;
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .55);
+        }
+
+        .wpp-float svg {
+            width: 26px;
+            height: 26px;
+            fill: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wpp-pulse {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: #25d366;
+            animation: wppPulse 2.5s infinite;
+        }
+
+        @keyframes wppPulse {
+            0%   { transform: scale(1); opacity: .5; }
+            100% { transform: scale(1.65); opacity: 0; }
+        }
+
+        @keyframes floatIn {
+            from { opacity: 0; transform: scale(.5) translateY(16px); }
+            to   { opacity: 1; transform: scale(1); }
+        }
