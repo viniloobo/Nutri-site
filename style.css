@@ -72,14 +72,11 @@
 
         .carousel-track {
             display: flex;
+            align-items: flex-start;
             gap: 24px;
             width: max-content;
             padding: 8px 4px;
             animation: testimonial-scroll 32s linear infinite;
-        }
-
-        .testimonial-carousel:hover .carousel-track {
-            animation-play-state: paused;
         }
 
         .testimonial-card {
